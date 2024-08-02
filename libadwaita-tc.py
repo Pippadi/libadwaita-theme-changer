@@ -64,6 +64,9 @@ if __name__ == "__main__":
             removeCurrentTheme(abs_config_dir)
             print("Installing new theme...")
             setNewTheme(os.path.join(abs_themes_dir, chk_theme), abs_config_dir)
+            print("Setting new theme...")
+            os.system(f'gsettings set org.gnome.desktop.interface gtk-theme "{chk_theme}"')
+            os.system(f'gsettings set org.gnome.desktop.wm.preferences theme "{chk_theme}"')
             print("Done.")
         else:
             print("Bye bye!")
