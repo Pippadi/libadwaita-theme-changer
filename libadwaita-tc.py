@@ -33,13 +33,13 @@ if __name__ == "__main__":
 
     rel_themes_dir = str()
     print("Select theme folder: ")
-    print(f'0. {local_share_dir}')
-    print(f'1. {dot_themes_dir}')
+    print(f'1. {local_share_dir}')
+    print(f'2. {dot_themes_dir}')
     opt = input("Choose your theme folder: ")
     match opt:
-        case "0":
-            rel_themes_dir = local_share_dir
         case "1":
+            rel_themes_dir = local_share_dir
+        case "2":
             rel_themes_dir = dot_themes_dir
         case _:
             raise ValueError()
