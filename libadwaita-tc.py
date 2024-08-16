@@ -30,17 +30,21 @@ if __name__ == "__main__":
     rel_config_dir = ".config"
     local_share_dir = ".local/share/themes"
     dot_themes_dir = ".themes"
+    usr_themes_dir = "/usr/share/themes"
 
     rel_themes_dir = str()
     print("Select theme folder: ")
     print(f'1. {local_share_dir}')
     print(f'2. {dot_themes_dir}')
+    print(f'3. {usr_themes_dir}')
     opt = input("Choose your theme folder: ")
     match opt:
         case "1":
             rel_themes_dir = local_share_dir
         case "2":
             rel_themes_dir = dot_themes_dir
+        case "3":
+            rel_themes_dir = usr_themes_dir
         case _:
             raise ValueError()
 
