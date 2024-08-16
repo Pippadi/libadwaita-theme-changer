@@ -30,17 +30,21 @@ if __name__ == "__main__":
     rel_config_dir = ".config"
     local_share_dir = ".local/share/themes"
     dot_themes_dir = ".themes"
+    usr_themes_dir = "/usr/share/themes"
 
     rel_themes_dir = str()
     print("Select theme folder: ")
-    print(f'0. {local_share_dir}')
-    print(f'1. {dot_themes_dir}')
+    print(f'1. {local_share_dir}')
+    print(f'2. {dot_themes_dir}')
+    print(f'3. {usr_themes_dir}')
     opt = input("Choose your theme folder: ")
     match opt:
-        case "0":
-            rel_themes_dir = local_share_dir
         case "1":
+            rel_themes_dir = local_share_dir
+        case "2":
             rel_themes_dir = dot_themes_dir
+        case "3":
+            rel_themes_dir = usr_themes_dir
         case _:
             raise ValueError()
 
@@ -64,6 +68,9 @@ if __name__ == "__main__":
             removeCurrentTheme(abs_config_dir)
             print("Installing new theme...")
             setNewTheme(os.path.join(abs_themes_dir, chk_theme), abs_config_dir)
+            print("Setting new theme...")
+            os.system(f'gsettings set org.gnome.desktop.interface gtk-theme "{chk_theme}"')
+            os.system(f'gsettings set org.gnome.desktop.wm.preferences theme "{chk_theme}"')
             print("Done.")
         else:
             print("Bye bye!")
